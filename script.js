@@ -1,15 +1,22 @@
-const deadline = '2024-03-17';
+const deadline = new Date('March 17, 2024 00:00:00');
 
 console.log(new Date());
+console.log(deadline);
 
 const getTimeRemaining = endtime => {
   const t = Date.parse(endtime) - Date.parse(new Date());
-  const years =   Math.floor((t / (1000 * 60 * 60 * 24 * 30 * 12)));
-  const months =  Math.floor((t / (1000 * 60 * 60 * 24 * (365.25/12))) % 12);
-  const days =    Math.floor((t / (1000 * 60 * 60 * 24)) % (365.25/12));
-  const hours =   Math.floor((t / (1000 * 60 * 60)) % 24) - 3;
+  const years = Math.floor((t / (1000 * 60 * 60 * 24 * (365.25/12) * 12)));
+  const months = Math.floor((t / (1000 * 60 * 60 * 24 * (365.25/12))) % 12);
+  const days = Math.floor((t / (1000 * 60 * 60 * 24)) % (365.25/12));
+  const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((t / (1000 * 60)) % 60);
   const seconds = Math.floor((t / 1000) % 60);
+
+  /*
+  const years = new Date().getFullYear() - deadline.getFullYear();
+  const months = new Date().getMonth() + 1 - deadline.getMonth();
+  const days = new Date().getDate() - deadline.getDate();
+  */
 
   return {
     'total': t,
