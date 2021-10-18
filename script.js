@@ -66,4 +66,6 @@ const setClock = (selector, endtime) => {
   }
 };
 
-setClock('.timer', deadline);
+if(new Date() < deadline) {
+  setClock('.timer', deadline);
+}
